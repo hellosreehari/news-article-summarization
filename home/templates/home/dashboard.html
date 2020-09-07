@@ -1,0 +1,27 @@
+{% extends 'home/main.html' %}
+{% block content %}
+    <!-- Content Block-->
+    <br>
+    <div class="container">
+
+            {%  for i in news%}
+            <div class="card mb-3" style="max-width: 100%;">
+                <div class="row no-gutters">
+                  <div class="col-md-4">
+                    <img src="{{i.image_url}}" class="card-img" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">{{i.title}}</h5>
+                      <p class="card-text">{{i.summary}}</p>
+                      <a href="{{i.article_url}}">Read More</a>
+                      <p class="card-text"><small class="text-muted">{{i.date_published}}</small></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+    </div>
+
+<!-- Content Block End-->
+{% endblock %}

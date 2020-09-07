@@ -1,0 +1,40 @@
+{% extends 'home/main.html' %}
+{% block content %}
+<div class="album py-5 bg-light">
+    <div class="container">
+<form action="{% url 'approve' %}" method="POST">
+  {% csrf_token %}
+<input type="text" id="inputPassword5" name="selecturl" class="form-control" placeholder="Paste URL Here" aria-describedby="passwordHelpBlock">
+<br>
+<button type="submit" class="btn btn-primary btn-lg btn-block">Summarize</button>
+<br>
+</form>
+
+      <div class="row">
+        {% for i in newslist %}
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+              <p class="card-text">{{i.title}}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a href="{{i.url}}" target="_blank"><button type="button" class="btn btn-sm btn-outline-secondary"> View</button></a>
+                <form action="{% url 'approve' %}" method="POST">
+                {% csrf_token%}
+                <button type="submit" class="btn btn-sm btn-outline-secondary" value="{{i.url}}" name="selecturl">Summarize</button>
+                </form>
+                </div>
+                <small class="text-muted">LiveMint.com</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        <br>
+        <br>
+        <a href="{% url 'logout' %}">Logout</a>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

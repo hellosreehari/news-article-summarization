@@ -1,0 +1,90 @@
+{% extends 'home/main.html' %}
+{% block content %}
+<!-- Content Block-->
+<div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <br>
+        <h2>{{article_title}}</h2>
+        {{full_article}}
+      </div>
+      <div class="col">
+
+        <div class="accordion" id="accordionExample">
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Summary #1
+                  </button>
+                </h2>
+              </div>
+          
+              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                  <form action="{% url 'dashboard' %}" method="POST">
+                      {% csrf_token %}
+                      <div class="form-group">
+                        <label for="formGroupExampleInput">Title</label>
+                        <input type="text" name="article_title" class="form-control" id="formGroupExampleInput" value="{{article_title}}">
+                      </div>
+                      <div class="form-group">
+                          <label for="exampleFormControlTextarea1">Summary</label>
+                          <textarea class="form-control" name="article_summary" id="exampleFormControlTextarea1" rows="10">{{summary_1}}</textarea>
+                      </div>
+                      <div class="form-group">
+                          <label for="formGroupExampleInput2">URL</label>
+                          <input type="text" name = "article_url" class="form-control" id="formGroupExampleInput2" value="{{article_url}}">
+                      </div>
+                      <div class="form-group">
+                          <label for="formGroupExampleInput2">Image URL</label>
+                          <input type="text" name = "image_url" class="form-control" id="formGroupExampleInput2" value="{{image_url}}">
+                        </div>
+                      <button type="submit" class="btn btn-primary">Publish</button>
+                      <br>
+                      <br>
+                    </form>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                  <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Summary #2
+                  </button>
+                </h2>
+              </div>
+              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                <div class="card-body">
+                    <form action="{% url 'dashboard' %}" method="POST">
+                        {% csrf_token %}
+                          <div class="form-group">
+                            <label for="formGroupExampleInput">Title</label>
+                            <input type="text" name="article_title" class="form-control" id="formGroupExampleInput" value="{{article_title}}">
+                          </div>
+                          <div class="form-group">
+                              <label for="exampleFormControlTextarea1">Summary</label>
+                              <textarea class="form-control" name="article_summary" id="exampleFormControlTextarea1" rows="10">{{summary_2}}</textarea>
+                          </div>
+                          <div class="form-group">
+                              <label for="formGroupExampleInput2">URL</label>
+                              <input type="text" name = "article_url" class="form-control" id="formGroupExampleInput2" value="{{article_url}}">
+                          </div>
+                          <div class="form-group">
+                              <label for="formGroupExampleInput2">Image URL</label>
+                              <input type="text" name = "image_url" class="form-control" id="formGroupExampleInput2" value="{{image_url}}">
+                            </div>
+                          <button type="submit" class="btn btn-primary">Publish</button>
+                          <br>
+                          <br>
+                        </form>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+</div>
+<!-- Content Block End-->
+{% endblock %}
